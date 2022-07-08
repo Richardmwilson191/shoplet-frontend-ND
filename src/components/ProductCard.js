@@ -10,9 +10,12 @@ const ProductCard = ({ product }) => {
             </div>
             <img
                 className="object-cover object-center w-full h-56"
-                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/images/${product.img_path}`}
+                src={`${process.env.NEXT_PUBLIC_S3_URL}/images/${product.img_path}`}
             />
-
+            {/* <img
+                    className="object-cover object-center w-full h-56"
+                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/images/${product.img_path}`}
+                /> */}
             <div className="flex items-center px-6 py-3 bg-indigo-900">
                 <FaMoneyBill color="#22c560" fontSize="1.2rem" />
 

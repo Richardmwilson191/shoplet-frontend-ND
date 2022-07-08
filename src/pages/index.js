@@ -104,7 +104,7 @@ const service = [
     },
 ]
 
-export default function Home() {
+export default function Index() {
     return (
         <AppLayout>
             <div className="bg-white">

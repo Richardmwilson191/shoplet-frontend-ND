@@ -33,7 +33,7 @@ export default function Sell() {
                         className={`${
                             !isVisibleSold
                                 ? 'bg-green-500 hover:bg-green-500'
-                                : ''
+                                : 'from-gray-500 to-gray-600 hover:from-gray-400 hover:to-gray-500'
                         } w-1/2 rounded-none bg-white text-center justify-center`}>
                         <h2 className="">For Sale</h2>
                     </Button>
@@ -42,7 +42,7 @@ export default function Sell() {
                         className={`${
                             isVisibleSold
                                 ? 'bg-green-500 hover:bg-green-500'
-                                : ''
+                                : 'from-gray-500 to-gray-600 hover:from-gray-400 hover:to-gray-500'
                         } w-1/2 rounded-none bg-white text-center justify-center`}>
                         <h2 className="">Sold</h2>
                     </Button>
