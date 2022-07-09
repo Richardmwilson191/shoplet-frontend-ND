@@ -21,7 +21,6 @@ export default function Sell() {
     const showSold = () => {
         setIsVisibleSold(true)
     }
-    console.log(user)
 
     return (
         <AppLayout>

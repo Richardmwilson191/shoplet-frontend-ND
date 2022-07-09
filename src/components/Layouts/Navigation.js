@@ -59,9 +59,11 @@ export default function Navigation() {
                             <div className="flex justify-between h-16">
                                 <div className="flex px-2 lg:px-0">
                                     <div className="flex-shrink-0 flex items-center">
-                                        <span className="text-4xl">
-                                            Shoplet
-                                        </span>
+                                        <Link href="/">
+                                            <span className='className="text-4xl"'>
+                                                Shoplet
+                                            </span>
+                                        </Link>
                                     </div>
                                     <div className="hidden lg:ml-6 lg:flex lg:space-x-8">
                                         {/* Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}

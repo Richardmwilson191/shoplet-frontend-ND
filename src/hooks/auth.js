@@ -2,6 +2,8 @@ import useSWR from 'swr'
 import axios from '@/lib/axios'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
+// import aes from 'crypto-js/aes'
+import CryptoJS from 'crypto-js'
 
 export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
     const router = useRouter()
@@ -9,7 +11,10 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
     const { data: user, error, revalidate } = useSWR('/api/user', () =>
         axios
             .get('/api/user')
-            .then(res => res.data)
+            .then(res => {
+                document.cookie = 'role=' + res.data.role_id
+                return res.data
+            })
             .catch(error => {
                 if (error.response.status !== 409) throw error
 
@@ -95,6 +100,8 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
             await axios.post('/logout')
 
             revalidate()
+            document.cookie =
+                'role=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
         }
 
         window.location.pathname = '/login'
