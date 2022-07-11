@@ -42,13 +42,16 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
 
     const login = async ({ setErrors, setStatus, ...props }) => {
         const xsrf = await csrf()
-        console.log(xsrf)
 
         setErrors([])
         setStatus(null)
 
         axios
-            .post('/login', props)
+            .post('/login', props, {
+                headers: {
+                    'X-XSRF-TOKEN': xsrf.config.headers['X-XSRF-TOKEN'],
+                },
+            })
             .then(() => revalidate())
             .catch(error => {
                 if (error.response.status !== 422) throw error
