@@ -11,7 +11,10 @@ function getCookie(cookieName) {
 
 let xsrf
 
-if (typeof document !== 'undefined') {
+if (
+    typeof document !== 'undefined' &&
+    getCookie('XSRF-TOKEN') !== 'undefined'
+) {
     xsrf = getCookie('XSRF-TOKEN').slice(0, -3)
 }
 
