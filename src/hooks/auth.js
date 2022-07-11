@@ -25,18 +25,19 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
     const csrf = () => axios.get('/sanctum/csrf-cookie')
 
     const register = async ({ setErrors, ...props }) => {
-        await csrf()
-
         setErrors([])
+        csrf().then(
+            // console.log(xsrt)
 
-        axios
-            .post('/register', props)
-            .then(() => revalidate())
-            .catch(error => {
-                if (error.response.status !== 422) throw error
+            axios
+                .post('/register', props)
+                .then(() => revalidate())
+                .catch(error => {
+                    if (error.response.status !== 422) throw error
 
-                setErrors(Object.values(error.response.data.errors).flat())
-            })
+                    setErrors(Object.values(error.response.data.errors).flat())
+                }),
+        )
     }
 
     const login = async ({ setErrors, setStatus, ...props }) => {
